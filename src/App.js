@@ -1,8 +1,16 @@
+import { GlobalStyles } from "./styles/Global";
+import { AppContainer } from "./styles/Global";
+import Navbar from "./components/navbar/Navbar";
+
+import Home from "./pages/Home";
+
 function App() {
   return (
-    <div className="App">
-      <h1>Hello World</h1>
-    </div>
+    <AppContainer>
+      <GlobalStyles />
+      <Navbar />
+      <Home />
+    </AppContainer>
   );
 }
 
