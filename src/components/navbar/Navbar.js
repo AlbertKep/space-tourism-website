@@ -2,18 +2,19 @@ import {
   Navigation,
   LogoContainer,
   LogoIcon,
-  HorizontalLine,
   MenuIconContainer,
   MenuIcon,
   Menu,
   MenuList,
   MenuItem,
+  MenuLink,
 } from "./Navbar.styled";
 
 import logo from "../../assets/shared/logo.svg";
 import hamburgerMenu from "../../assets/shared/icon-hamburger.svg";
 import closeMenu from "../../assets/shared/icon-close.svg";
 
+// import { Link } from "react-router-dom";
 import { useState } from "react";
 
 const Navbar = () => {
@@ -31,21 +32,19 @@ const Navbar = () => {
         ></MenuIcon>
       </MenuIconContainer>
 
-      {/* <HorizontalLine /> */}
-
       <Menu menuPosition={menuIsOpen ? "0" : "-100%"}>
         <MenuList>
           <MenuItem>
-            <a href="">01 Home</a>
+            <MenuLink to="/">01 Home</MenuLink>
           </MenuItem>
           <MenuItem>
-            <a href=""> 02 Destination</a>
+            <MenuLink to="/destination">02 Destination</MenuLink>
           </MenuItem>
           <MenuItem>
-            <a href=""> 03 Crew</a>
+            <MenuLink to="/crew"> 03 Crew</MenuLink>
           </MenuItem>
           <MenuItem>
-            <a href="">04 Technology</a>
+            <MenuLink to="/technology">04 Technology</MenuLink>
           </MenuItem>
         </MenuList>
       </Menu>

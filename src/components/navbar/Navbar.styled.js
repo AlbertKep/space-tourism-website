@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 export const Navigation = styled.nav`
@@ -88,12 +89,12 @@ export const MenuItem = styled.li`
   @media only screen and (min-width: 992px) {
     padding-left: 2em;
   }
+`;
 
-  a {
-    color: #fff;
-    text-decoration: none;
-    text-transform: uppercase;
-    letter-spacing: 4.75px;
-    font-weight: 400;
-  }
+export const MenuLink = styled(Link)`
+  color: #fff;
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 4.75px;
+  font-weight: 400;
 `;
