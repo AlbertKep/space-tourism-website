@@ -1,10 +1,19 @@
-import styled from "styled-components";
+import { SectionWrapper } from "../components/layout/Layout.styled";
 
-export const Container = styled.div`
-  height: 100vh;
-  background-color: black;
-`;
+import DestinationSection from "../components/destination/DestinationSection";
+
+import bgMobile from "../assets/destination/background-destination-mobile.jpg";
+import bgTablet from "../assets/destination/background-destination-tablet.jpg";
+import bgDesktop from "../assets/destination/background-destination-desktop.jpg";
 
 export default function Destination() {
-  return <Container>Destination</Container>;
+  return (
+    <SectionWrapper
+      bgMobile={bgMobile}
+      bgTablet={bgTablet}
+      bgDesktop={bgDesktop}
+    >
+      <DestinationSection />
+    </SectionWrapper>
+  );
 }

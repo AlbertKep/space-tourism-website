@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 export const SectionWrapper = styled.div`
+  height: 100vh;
   background-image: url(${({ bgMobile }) => bgMobile});
   background-repeat: no-repeat;
   background-size: cover;
