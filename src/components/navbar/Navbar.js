@@ -10,12 +10,11 @@ import {
   MenuLink,
 } from "./Navbar.styled";
 
-import logo from "../../assets/shared/logo.svg";
-import hamburgerMenu from "../../assets/shared/icon-hamburger.svg";
-import closeMenu from "../../assets/shared/icon-close.svg";
-
-// import { Link } from "react-router-dom";
 import { useState } from "react";
+
+const logo = "./assets/shared/logo.svg";
+const hamburgerMenu = "./assets/shared/icon-hamburger.svg";
+const closeMenu = "./assets/shared/icon-close.svg";
 
 const Navbar = () => {
   const [menuIsOpen, setIsMenuOpen] = useState(false);

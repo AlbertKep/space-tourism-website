@@ -11,10 +11,30 @@ import {
   DetailsWrapper,
 } from "./DestinationSection.styled";
 
-import moon from "../../assets/destination/image-moon.png";
+// import moon from "../../assets/destination/image-moon.png";
 import { RegularText } from "../../styles/RegularText.styled";
 
+import data from "../../data.json";
+import { useState, useEffect } from "react";
+
+const destinations = data.destinations;
+
 export default function DestinationSection() {
+  const [currentNamePlanet, setCurrentNamePlanet] = useState("Moon");
+  const [currentPlanet, setCurrentPlanet] = useState(destinations[0]);
+
+  useEffect(() => {
+    const changePlanet = () => {
+      const planet = destinations.filter((planet) => {
+        return planet.name === currentNamePlanet;
+      });
+
+      setCurrentPlanet(planet[0]);
+    };
+
+    changePlanet();
+  }, [currentNamePlanet]);
+
   return (
     <DestinationContainer>
       <PlanetContainer>
@@ -23,34 +43,37 @@ export default function DestinationSection() {
         </Subheading>
 
         <PlanetImageContainer>
-          <img src={moon} alt="Moon" />
+          <img src={currentPlanet.images.png} alt="Moon" />
         </PlanetImageContainer>
       </PlanetContainer>
 
       <PlanetInfo>
         <PlanetsList>
-          <PlanetsItem>Moon</PlanetsItem>
-          <PlanetsItem>Mars</PlanetsItem>
-          <PlanetsItem>Europa</PlanetsItem>
-          <PlanetsItem>Titan</PlanetsItem>
+          <PlanetsItem onClick={() => setCurrentNamePlanet("Moon")}>
+            Moon
+          </PlanetsItem>
+          <PlanetsItem onClick={() => setCurrentNamePlanet("Mars")}>
+            Mars
+          </PlanetsItem>
+          <PlanetsItem onClick={() => setCurrentNamePlanet("Europa")}>
+            Europa
+          </PlanetsItem>
+          <PlanetsItem onClick={() => setCurrentNamePlanet("Titan")}>
+            Titan
+          </PlanetsItem>
         </PlanetsList>
-        <PlanetName>Moon</PlanetName>
-        <RegularText>
-          See our planet as you’ve never seen it before. A perfect relaxing trip
-          away to help regain perspective and come back refreshed. While you’re
-          there, take in some history by visiting the Luna 2 and Apollo 11
-          landing sites.
-        </RegularText>
+        <PlanetName>{currentPlanet.name}</PlanetName>
+        <RegularText>{currentPlanet.description}</RegularText>
 
         <PlanetDetails>
           <DetailsWrapper>
             <span>Avg. Distance</span>
-            <span>384,400 km</span>
+            <span>{currentPlanet.distance}</span>
           </DetailsWrapper>
 
           <DetailsWrapper>
             <span>Est. time travel</span>
-            <span>3 days</span>
+            <span>{currentPlanet.travel}</span>
           </DetailsWrapper>
         </PlanetDetails>
       </PlanetInfo>

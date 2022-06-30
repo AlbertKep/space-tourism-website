@@ -2,9 +2,9 @@ import { SectionWrapper } from "../components/layout/Layout.styled";
 
 import HomeSection from "../components/home/HomeSection";
 
-import bgMobile from "../assets/home/background-home-mobile.jpg";
-import bgTablet from "../assets/home/background-home-tablet.jpg";
-import bgDesktop from "../assets/home/background-home-desktop.jpg";
+const bgMobile = "../assets/home/background-home-mobile.jpg";
+const bgTablet = "../assets/home/background-home-tablet.jpg";
+const bgDesktop = "../assets/home/background-home-desktop.jpg";
 
 const Home = () => {
   return (
