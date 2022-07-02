@@ -1,7 +1,8 @@
-import { Subheading } from "../../styles/Subheading.styled";
+// import { Subheading } from "../../styles/Subheading.styled";
 import {
   DestinationContainer,
   PlanetContainer,
+  DestinationSubheading,
   PlanetImageContainer,
   PlanetInfo,
   PlanetsList,
@@ -38,9 +39,9 @@ export default function DestinationSection() {
   return (
     <DestinationContainer>
       <PlanetContainer>
-        <Subheading>
+        <DestinationSubheading>
           <span>01</span>Pick up your Destination
-        </Subheading>
+        </DestinationSubheading>
 
         <PlanetImageContainer>
           <img src={currentPlanet.images.png} alt="Moon" />

@@ -14,5 +14,7 @@ export const SectionWrapper = styled.div`
   @media only screen and (min-width: 992px) {
     background-image: url(${({ bgDesktop }) => bgDesktop});
     background-position: center;
+    display: flex;
+    align-items: center;
   }
 `;
