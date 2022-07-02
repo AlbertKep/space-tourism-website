@@ -34,16 +34,25 @@ const Navbar = () => {
       <Menu menuPosition={menuIsOpen ? "0" : "-100%"}>
         <MenuList>
           <MenuItem>
-            <MenuLink to="/">01 Home</MenuLink>
+            <MenuLink to="/" onClick={() => setIsMenuOpen(false)}>
+              01 Home
+            </MenuLink>
           </MenuItem>
           <MenuItem>
-            <MenuLink to="/destination">02 Destination</MenuLink>
+            <MenuLink to="/destination" onClick={() => setIsMenuOpen(false)}>
+              02 Destination
+            </MenuLink>
           </MenuItem>
           <MenuItem>
-            <MenuLink to="/crew"> 03 Crew</MenuLink>
+            <MenuLink to="/crew" onClick={() => setIsMenuOpen(false)}>
+              {" "}
+              03 Crew
+            </MenuLink>
           </MenuItem>
           <MenuItem>
-            <MenuLink to="/technology">04 Technology</MenuLink>
+            <MenuLink to="/technology" onClick={() => setIsMenuOpen(false)}>
+              04 Technology
+            </MenuLink>
           </MenuItem>
         </MenuList>
       </Menu>
