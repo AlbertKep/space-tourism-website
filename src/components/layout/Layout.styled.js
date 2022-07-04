@@ -18,3 +18,40 @@ export const SectionWrapper = styled.div`
     align-items: center;
   }
 `;
+
+export const InfoWrapper = styled.div`
+  text-align: center;
+  margin-top: 1.5em;
+  padding: 0 1.5em;
+
+  @media only screen and (min-width: 992px) {
+    text-align: left;
+    margin: auto;
+  }
+`;
+
+export const ImageWrapper = styled.div`
+  text-align: center;
+  margin-top: 2.5em;
+
+  /* img {
+    width: 40%;
+
+    @media only screen and (min-width: 480px) {
+      width: 25%;
+    }
+
+    @media only screen and (min-width: 992px) {
+      width: 50%;
+    }
+  } */
+
+  img {
+    width: 100%;
+    max-width: 250px;
+
+    @media only screen and (min-width: 992px) {
+      max-width: 350px;
+    }
+  }
+`;

@@ -40,7 +40,7 @@ export default function DestinationSection() {
     <DestinationContainer>
       <PlanetContainer>
         <DestinationSubheading>
-          <span>01</span>Pick up your Destination
+          <span>02</span>Pick up your Destination
         </DestinationSubheading>
 
         <PlanetImageContainer>
