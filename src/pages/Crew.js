@@ -1,5 +1,4 @@
 import { SectionWrapper } from "../components/layout/Layout.styled";
-
 import CrewSection from "../components/crew/CrewSection";
 
 const bgMobile = "../assets/crew/background-crew-mobile.jpg";

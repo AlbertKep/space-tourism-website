@@ -1,4 +1,3 @@
-// import { Subheading } from "../../styles/Subheading.styled";
 import {
   DestinationContainer,
   PlanetContainer,
@@ -12,29 +11,23 @@ import {
   DetailsWrapper,
 } from "./DestinationSection.styled";
 
-// import moon from "../../assets/destination/image-moon.png";
 import { RegularText } from "../../styles/RegularText.styled";
 
 import data from "../../data.json";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
 const destinations = data.destinations;
+const defaultPlanet = destinations[0];
 
 export default function DestinationSection() {
-  const [currentNamePlanet, setCurrentNamePlanet] = useState("Moon");
-  const [currentPlanet, setCurrentPlanet] = useState(destinations[0]);
+  const [currentPlanet, setCurrentPlanet] = useState(defaultPlanet);
 
-  useEffect(() => {
-    const changePlanet = () => {
-      const planet = destinations.filter((planet) => {
-        return planet.name === currentNamePlanet;
-      });
-
-      setCurrentPlanet(planet[0]);
-    };
-
-    changePlanet();
-  }, [currentNamePlanet]);
+  const setPlanet = (currentSelectedPlanet) => {
+    const planet = destinations.find(
+      ({ name }) => name === currentSelectedPlanet
+    );
+    if (planet) setCurrentPlanet(planet);
+  };
 
   return (
     <DestinationContainer>
@@ -50,18 +43,11 @@ export default function DestinationSection() {
 
       <PlanetInfo>
         <PlanetsList>
-          <PlanetsItem onClick={() => setCurrentNamePlanet("Moon")}>
-            Moon
-          </PlanetsItem>
-          <PlanetsItem onClick={() => setCurrentNamePlanet("Mars")}>
-            Mars
-          </PlanetsItem>
-          <PlanetsItem onClick={() => setCurrentNamePlanet("Europa")}>
-            Europa
-          </PlanetsItem>
-          <PlanetsItem onClick={() => setCurrentNamePlanet("Titan")}>
-            Titan
-          </PlanetsItem>
+          {destinations.map((planet) => (
+            <PlanetsItem onClick={() => setPlanet(planet.name)}>
+              {planet.name}
+            </PlanetsItem>
+          ))}
         </PlanetsList>
         <PlanetName>{currentPlanet.name}</PlanetName>
         <RegularText>{currentPlanet.description}</RegularText>
