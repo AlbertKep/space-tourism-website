@@ -44,7 +44,10 @@ export default function DestinationSection() {
       <PlanetInfo>
         <PlanetsList>
           {destinations.map((planet) => (
-            <PlanetsItem onClick={() => setPlanet(planet.name)}>
+            <PlanetsItem
+              key={planet.name}
+              onClick={() => setPlanet(planet.name)}
+            >
               {planet.name}
             </PlanetsItem>
           ))}

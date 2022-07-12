@@ -34,7 +34,7 @@ export const ImageWrapper = styled.div`
   text-align: center;
   margin-top: 2.5em;
 
-  /* img {
+  img {
     width: 40%;
 
     @media only screen and (min-width: 480px) {
@@ -42,10 +42,12 @@ export const ImageWrapper = styled.div`
     }
 
     @media only screen and (min-width: 992px) {
-      width: 50%;
+      width: 60%;
+      max-width: 350px;
+      /* height: 350px; */
     }
-  } */
-
+  }
+  /* 
   img {
     width: 100%;
     max-width: 250px;
@@ -53,5 +55,5 @@ export const ImageWrapper = styled.div`
     @media only screen and (min-width: 992px) {
       max-width: 350px;
     }
-  }
+  } */
 `;

@@ -11,8 +11,21 @@ import { RegularText } from "../../styles/RegularText.styled";
 import { Role } from "../../styles/Role.styled";
 import { Name } from "../../styles/Name.styled";
 
-const person = "../assets/crew/image-douglas-hurley.png";
+import data from "../../data.json";
+
+import { useState } from "react";
+
+const crew = data.crew;
+const defaultCrew = crew[0];
+
 export default function CrewSection() {
+  const [currentCrew, setCurrentCrew] = useState(defaultCrew);
+
+  const setCrew = (currentSelectedCrew) => {
+    const person = crew.find(({ name }) => name === currentSelectedCrew);
+    if (person) setCurrentCrew(person);
+  };
+
   return (
     <CrewContainer>
       <Subheading>
@@ -20,22 +33,21 @@ export default function CrewSection() {
       </Subheading>
       <ControlContainer>
         <ImageWrapper>
-          <img src={person} alt="Person" />
+          <img src={currentCrew.images.png} alt="Person" />
         </ImageWrapper>
         <CrewInfoWrapper>
           <Dots>
+            {crew.map((person) => (
+              <Dot key={person.name} onClick={() => setCrew(person.name)} />
+            ))}
+            {/* <Dot></Dot>
             <Dot></Dot>
             <Dot></Dot>
-            <Dot></Dot>
-            <Dot></Dot>
+            <Dot></Dot> */}
           </Dots>
-          <Role>Commander</Role>
-          <Name>Douglas Hurley</Name>
-          <RegularText>
-            Douglas Gerald Hurley is an American engineer, former Marine Corps
-            pilot and former NASA astronaut. He launched into space for the
-            third time as commander of Crew Dragon Demo-2.
-          </RegularText>
+          <Role>{currentCrew.role}</Role>
+          <Name>{currentCrew.name}</Name>
+          <RegularText>{currentCrew.bio}</RegularText>
         </CrewInfoWrapper>
       </ControlContainer>
     </CrewContainer>
