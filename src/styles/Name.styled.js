@@ -7,6 +7,6 @@ export const Name = styled.h3`
 
   @media only screen and (min-width: 768px) {
     letter-spacing: 2px;
-    font-size: 2rem;
+    font-size: 3rem;
   }
 `;
