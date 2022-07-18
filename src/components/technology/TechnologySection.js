@@ -11,10 +11,42 @@ import { Role } from "../../styles/Role.styled";
 import { Name } from "../../styles/Name.styled";
 import { RegularText } from "../../styles/RegularText.styled";
 
-// const photo = "../../../assets/technology/image-space-capsule-landscape.jpg";
-const vehicle = "../../../assets/technology/image-launch-vehicle-portrait.jpg";
+import data from "../../data.json";
+
+import { useState, useEffect } from "react";
+
+const technology = data.technology;
+const defaultTechnology = technology[0];
+
+const getWindowSize = () => {
+  return window.innerWidth;
+};
 
 export default function TechnologySection() {
+  const desktopWidth = 992;
+  const [currentTechnology, setCurrentTechnology] = useState(defaultTechnology);
+  const [windowSize, setWindowSize] = useState(getWindowSize());
+
+  useEffect(() => {
+    function handleWindowResize() {
+      setWindowSize(getWindowSize());
+    }
+
+    window.addEventListener("resize", handleWindowResize);
+
+    return () => {
+      window.removeEventListener("resize", handleWindowResize);
+    };
+  }, []);
+
+  const setTechnology = (currentSelectedCrew) => {
+    const technologyName = technology.find(
+      ({ name }) => name === currentSelectedCrew
+    );
+    if (technologyName) setCurrentTechnology(technologyName);
+  };
+
+  console.log(windowSize);
   return (
     <TechnologyContainer>
       <Subheading>
@@ -22,23 +54,26 @@ export default function TechnologySection() {
       </Subheading>
       <ControlContainer>
         <ImageWrapper>
-          <img src={vehicle} alt="Technology" />
+          <img
+            src={
+              windowSize >= desktopWidth
+                ? currentTechnology.images.portrait
+                : currentTechnology.images.landscape
+            }
+            alt="Technology"
+          />
         </ImageWrapper>
         <TechnologyInfoWrapper>
           <Dots>
-            <Dot>1</Dot>
-            <Dot>2</Dot>
-            <Dot>3</Dot>
+            {technology.map((tech, index) => (
+              <Dot key={tech.name} onClick={() => setTechnology(tech.name)}>
+                {++index}
+              </Dot>
+            ))}
           </Dots>
-          <Role>The Terminology..</Role>
-          <Name>Space Capsule</Name>
-          <RegularText>
-            A launch vehicle or carrier rocket is a rocket-propelled vehicle
-            used to carry a payload from Earth's surface to space, usually to
-            Earth orbit or beyond. Our WEB-X carrier rocket is the most powerful
-            in operation. Standing 150 metres tall, it's quite an awe-inspiring
-            sight on the launch pad!"
-          </RegularText>
+          <Role>The terminology...</Role>
+          <Name>{currentTechnology.name}</Name>
+          <RegularText>{currentTechnology.description}</RegularText>
         </TechnologyInfoWrapper>
       </ControlContainer>
     </TechnologyContainer>

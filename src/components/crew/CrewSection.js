@@ -40,10 +40,6 @@ export default function CrewSection() {
             {crew.map((person) => (
               <Dot key={person.name} onClick={() => setCrew(person.name)} />
             ))}
-            {/* <Dot></Dot>
-            <Dot></Dot>
-            <Dot></Dot>
-            <Dot></Dot> */}
           </Dots>
           <Role>{currentCrew.role}</Role>
           <Name>{currentCrew.name}</Name>
