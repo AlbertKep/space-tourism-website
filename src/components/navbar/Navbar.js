@@ -15,6 +15,7 @@ import { useState } from "react";
 const logo = "./assets/shared/logo.svg";
 const hamburgerMenu = "./assets/shared/icon-hamburger.svg";
 const closeMenu = "./assets/shared/icon-close.svg";
+const activeLink = "2px solid #fff";
 
 const Navbar = () => {
   const [menuIsOpen, setIsMenuOpen] = useState(false);
@@ -34,23 +35,38 @@ const Navbar = () => {
       <Menu menuPosition={menuIsOpen ? "0" : "-100%"}>
         <MenuList>
           <MenuItem>
-            <MenuLink to="/" onClick={() => setIsMenuOpen(false)}>
+            <MenuLink
+              to="/"
+              active={activeLink}
+              onClick={() => setIsMenuOpen(false)}
+            >
               01 Home
             </MenuLink>
           </MenuItem>
           <MenuItem>
-            <MenuLink to="/destination" onClick={() => setIsMenuOpen(false)}>
+            <MenuLink
+              to="/destination"
+              active={activeLink}
+              onClick={() => setIsMenuOpen(false)}
+            >
               02 Destination
             </MenuLink>
           </MenuItem>
           <MenuItem>
-            <MenuLink to="/crew" onClick={() => setIsMenuOpen(false)}>
-              {" "}
+            <MenuLink
+              to="/crew"
+              active={activeLink}
+              onClick={() => setIsMenuOpen(false)}
+            >
               03 Crew
             </MenuLink>
           </MenuItem>
           <MenuItem>
-            <MenuLink to="/technology" onClick={() => setIsMenuOpen(false)}>
+            <MenuLink
+              to="/technology"
+              active={activeLink}
+              onClick={() => setIsMenuOpen(false)}
+            >
               04 Technology
             </MenuLink>
           </MenuItem>

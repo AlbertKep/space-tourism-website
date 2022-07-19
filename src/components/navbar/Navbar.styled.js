@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import styled from "styled-components";
 
 export const Navigation = styled.nav`
@@ -76,14 +76,9 @@ export const MenuList = styled.ul`
 export const MenuItem = styled.li`
   list-style-type: none;
   padding: 1em;
-  border-bottom: 3px solid transparent;
 
   @media only screen and (min-width: 768px) {
     padding: 2em 0.5em;
-
-    &:hover {
-      border-bottom: 3px solid #fff;
-    }
   }
 
   @media only screen and (min-width: 992px) {
@@ -91,10 +86,21 @@ export const MenuItem = styled.li`
   }
 `;
 
-export const MenuLink = styled(Link)`
+export const MenuLink = styled(NavLink)`
   color: #fff;
   text-decoration: none;
   text-transform: uppercase;
   letter-spacing: 4.75px;
   font-weight: 400;
+  padding-bottom: 0.75em;
+  border-bottom: 2px solid transparent;
+  transition: all 250ms ease-in-out;
+
+  &:hover {
+    border-bottom: 2px solid #707070;
+  }
+
+  &.active {
+    border-bottom: ${({ active }) => (active ? active : "transparent")};
+  }
 `;
