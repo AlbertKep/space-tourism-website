@@ -17,6 +17,7 @@ import { useState, useEffect } from "react";
 
 const technology = data.technology;
 const defaultTechnology = technology[0];
+const activeTechnologyStyle = { backgroundColor: "#fff", color: "#000" };
 
 const getWindowSize = () => {
   return window.innerWidth;
@@ -66,7 +67,15 @@ export default function TechnologySection() {
         <TechnologyInfoWrapper>
           <Dots>
             {technology.map((tech, index) => (
-              <Dot key={tech.name} onClick={() => setTechnology(tech.name)}>
+              <Dot
+                key={tech.name}
+                onClick={() => setTechnology(tech.name)}
+                active={
+                  tech.name === currentTechnology.name
+                    ? activeTechnologyStyle
+                    : ""
+                }
+              >
                 {++index}
               </Dot>
             ))}

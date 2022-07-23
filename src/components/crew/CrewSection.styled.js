@@ -71,8 +71,12 @@ export const Dot = styled.span`
   width: 10px;
   height: 10px;
   border-radius: 100%;
-  background-color: #707070;
-  /* padding: 0.5em; */
+  background-color: ${({ active }) => active};
   margin: 0.5em;
   cursor: pointer;
+
+  &:hover {
+    background-color: ${({ active }) => (active ? active : "#85868b")};
+    transform: scale(1.1);
+  }
 `;

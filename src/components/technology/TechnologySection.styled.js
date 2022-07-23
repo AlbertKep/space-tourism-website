@@ -79,17 +79,17 @@ export const Dot = styled.div`
   display: inline-block;
   text-align: center;
   cursor: pointer;
+  background-color: ${({ active }) => active.backgroundColor};
   border: 2px solid #4b4b54;
   border-radius: 50%;
   width: 20px;
   height: 20px;
   padding: 0.5em;
-  color: #fff;
+  color: ${({ active }) => active.color};
   margin: 0.5em;
 
   &:hover {
-    background-color: #fff;
-    color: #000;
+    border-color: #fff;
   }
 
   @media only screen and (min-width: 992px) {

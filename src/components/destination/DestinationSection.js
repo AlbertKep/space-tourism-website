@@ -18,6 +18,7 @@ import { useState } from "react";
 
 const destinations = data.destinations;
 const defaultPlanet = destinations[0];
+const activePlanetStyle = "1px solid #fff";
 
 export default function DestinationSection() {
   const [currentPlanet, setCurrentPlanet] = useState(defaultPlanet);
@@ -27,6 +28,7 @@ export default function DestinationSection() {
       ({ name }) => name === currentSelectedPlanet
     );
     if (planet) setCurrentPlanet(planet);
+    console.log(planet);
   };
 
   return (
@@ -47,6 +49,11 @@ export default function DestinationSection() {
             <PlanetsItem
               key={planet.name}
               onClick={() => setPlanet(planet.name)}
+              active={
+                planet.name === currentPlanet.name
+                  ? activePlanetStyle
+                  : "transparent"
+              }
             >
               {planet.name}
             </PlanetsItem>

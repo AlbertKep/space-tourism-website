@@ -85,14 +85,14 @@ export const PlanetsList = styled.ul`
 
 export const PlanetsItem = styled.li`
   list-style-type: none;
-  border-bottom: 1px solid transparent;
+  border-bottom: ${({ active }) => active};
   padding: 0.3em;
   text-transform: uppercase;
   letter-spacing: 2px;
 
   &:hover {
     cursor: pointer;
-    border-bottom: 1px solid #fff;
+    border-bottom: 1px solid #707070;
   }
 `;
 

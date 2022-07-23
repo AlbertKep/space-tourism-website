@@ -17,6 +17,7 @@ import { useState } from "react";
 
 const crew = data.crew;
 const defaultCrew = crew[0];
+const activeCrewStyle = "#ffffff";
 
 export default function CrewSection() {
   const [currentCrew, setCurrentCrew] = useState(defaultCrew);
@@ -38,7 +39,13 @@ export default function CrewSection() {
         <CrewInfoWrapper>
           <Dots>
             {crew.map((person) => (
-              <Dot key={person.name} onClick={() => setCrew(person.name)} />
+              <Dot
+                key={person.name}
+                onClick={() => setCrew(person.name)}
+                active={
+                  person.name === currentCrew.name ? activeCrewStyle : "#707070"
+                }
+              />
             ))}
           </Dots>
           <Role>{currentCrew.role}</Role>
