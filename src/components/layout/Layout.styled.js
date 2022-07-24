@@ -2,17 +2,18 @@ import styled from "styled-components";
 
 export const SectionWrapper = styled.div`
   height: 100vh;
-  background-image: url(${({ bgMobile }) => bgMobile});
+  overflow-y: hidden;
+  background-image: url(${({ bgmobile }) => bgmobile});
   background-repeat: no-repeat;
   background-size: cover;
 
   @media only screen and (min-width: 468px) {
-    background-image: url(${({ bgTablet }) => bgTablet});
+    background-image: url(${({ bgtablet }) => bgtablet});
     background-position: center;
   }
 
   @media only screen and (min-width: 992px) {
-    background-image: url(${({ bgDesktop }) => bgDesktop});
+    background-image: url(${({ bgdesktop }) => bgdesktop});
     background-position: center;
     display: flex;
     align-items: center;
