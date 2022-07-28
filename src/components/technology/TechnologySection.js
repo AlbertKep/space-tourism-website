@@ -15,12 +15,20 @@ import data from "../../data.json";
 
 import { useState, useEffect } from "react";
 
+import { motion } from "framer-motion";
+
 const technology = data.technology;
 const defaultTechnology = technology[0];
 const activeTechnologyStyle = { backgroundColor: "#fff", color: "#000" };
 
 const getWindowSize = () => {
   return window.innerWidth;
+};
+
+const routerVariants = {
+  hidden: { opacity: 0 },
+  visible: { opacity: 1 },
+  exit: { opacity: 0, transition: { duration: 0.1 } },
 };
 
 export default function TechnologySection() {
@@ -47,9 +55,13 @@ export default function TechnologySection() {
     if (technologyName) setCurrentTechnology(technologyName);
   };
 
-  console.log(windowSize);
   return (
-    <TechnologyContainer>
+    <TechnologyContainer
+      as={motion.section}
+      initial={routerVariants}
+      animate="hidden"
+      exit="exit"
+    >
       <Subheading>
         <span>04</span>Space launch 101
       </Subheading>

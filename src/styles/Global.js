@@ -11,10 +11,11 @@ export const GlobalStyles = createGlobalStyle`
   font-family: 'Barlow Condensed', sans-serif;
 }
 
-/* html, body {
-  width: 100%;
+html, body {
+  /* width: 100%; */
   overflow-x: hidden;
-} */
+  background-color: #000;
+}
 `;
 
 export const AppContainer = styled.div`

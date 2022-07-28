@@ -35,6 +35,7 @@ export const MenuIconContainer = styled.div`
 export const MenuIcon = styled.img``;
 
 export const Menu = styled.div`
+  z-index: 999;
   position: absolute;
   top: 0;
   right: ${({ menuPosition }) => menuPosition};

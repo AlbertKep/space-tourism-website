@@ -14,10 +14,17 @@ import { Name } from "../../styles/Name.styled";
 import data from "../../data.json";
 
 import { useState } from "react";
+import { motion } from "framer-motion";
 
 const crew = data.crew;
 const defaultCrew = crew[0];
 const activeCrewStyle = "#ffffff";
+
+const routerVariants = {
+  hidden: { opacity: 0 },
+  visible: { opacity: 1 },
+  exit: { opacity: 0, transition: { duration: 0.1 } },
+};
 
 export default function CrewSection() {
   const [currentCrew, setCurrentCrew] = useState(defaultCrew);
@@ -28,7 +35,13 @@ export default function CrewSection() {
   };
 
   return (
-    <CrewContainer>
+    <CrewContainer
+      as={motion.section}
+      variants={routerVariants}
+      initial="hidden"
+      animate="visible"
+      exit="exit"
+    >
       <Subheading>
         <span>03</span> meet your crew
       </Subheading>

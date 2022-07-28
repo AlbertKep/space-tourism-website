@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const SectionWrapper = styled.div`
   height: 100vh;
-  overflow-y: hidden;
+  overflow: hidden;
   background-image: url(${({ bgmobile }) => bgmobile});
   background-repeat: no-repeat;
   background-size: cover;

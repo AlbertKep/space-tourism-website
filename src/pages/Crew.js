@@ -13,10 +13,6 @@ export default function Crew() {
       bgmobile={bgMobile}
       bgtablet={bgTablet}
       bgdesktop={bgDesktop}
-      as={motion.section}
-      initial={{ opacity: 0.5 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0.5, transition: { duration: 0.1 } }}
     >
       <CrewSection />
     </SectionWrapper>

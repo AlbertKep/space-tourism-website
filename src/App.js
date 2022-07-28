@@ -11,7 +11,6 @@ function App() {
       <AppContainer>
         <GlobalStyles />
         <Navbar />
-
         <AnimatedRoutes />
       </AppContainer>
     </Router>

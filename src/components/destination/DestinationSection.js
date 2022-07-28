@@ -15,10 +15,17 @@ import { RegularText } from "../../styles/RegularText.styled";
 
 import data from "../../data.json";
 import { useState } from "react";
+import { motion } from "framer-motion";
 
 const destinations = data.destinations;
 const defaultPlanet = destinations[0];
 const activePlanetStyle = "1px solid #fff";
+
+const routerVariants = {
+  hidden: { opacity: 0 },
+  visible: { opacity: 1 },
+  exit: { opacity: 0, transition: { duration: 0.1 } },
+};
 
 export default function DestinationSection() {
   const [currentPlanet, setCurrentPlanet] = useState(defaultPlanet);
@@ -32,13 +39,30 @@ export default function DestinationSection() {
   };
 
   return (
-    <DestinationContainer>
+    <DestinationContainer
+      as={motion.section}
+      variants={routerVariants}
+      initial="hidden"
+      animate="visible"
+      exit="exit"
+    >
       <PlanetContainer>
         <DestinationSubheading>
           <span>02</span>Pick up your Destination
         </DestinationSubheading>
 
-        <PlanetImageContainer>
+        <PlanetImageContainer
+          as={motion.div}
+          animate={{
+            rotate: 360,
+            transition: {
+              type: "ease",
+              duration: 20,
+              repeat: Infinity,
+              ease: "linear",
+            },
+          }}
+        >
           <img src={currentPlanet.images.png} alt="Moon" />
         </PlanetImageContainer>
       </PlanetContainer>
