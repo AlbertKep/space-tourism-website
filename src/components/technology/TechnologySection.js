@@ -15,7 +15,7 @@ import data from "../../data.json";
 
 import { useState, useEffect } from "react";
 
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 
 const technology = data.technology;
 const defaultTechnology = technology[0];
@@ -31,11 +31,33 @@ const routerVariants = {
   exit: { opacity: 0, transition: { duration: 0.1 } },
 };
 
+const imageVariants = {
+  mobileAnimation: {
+    slideIn: { opacity: 0, x: "-100vw" },
+    animateSlide: {
+      opacity: 1,
+      x: 0,
+      transition: { duration: 0.5 },
+    },
+    slideOut: { opacity: 0, x: "100vw" },
+  },
+  desktopAnimation: {
+    slideIn: { opacity: 0, y: -100 },
+    animateSlide: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.5 },
+    },
+    slideOut: { opacity: 0, y: 100 },
+  },
+};
+
 export default function TechnologySection() {
   const desktopWidth = 992;
   const [currentTechnology, setCurrentTechnology] = useState(defaultTechnology);
   const [windowSize, setWindowSize] = useState(getWindowSize());
 
+  console.log("Render");
   useEffect(() => {
     function handleWindowResize() {
       setWindowSize(getWindowSize());
@@ -58,8 +80,9 @@ export default function TechnologySection() {
   return (
     <TechnologyContainer
       as={motion.section}
-      initial={routerVariants}
-      animate="hidden"
+      variants={routerVariants}
+      initial="hidden"
+      animate="visible"
       exit="exit"
     >
       <Subheading>
@@ -67,14 +90,25 @@ export default function TechnologySection() {
       </Subheading>
       <ControlContainer>
         <ImageWrapper>
-          <img
-            src={
-              windowSize >= desktopWidth
-                ? currentTechnology.images.portrait
-                : currentTechnology.images.landscape
-            }
-            alt="Technology"
-          />
+          <AnimatePresence exitBeforeEnter>
+            <motion.img
+              key={currentTechnology.name}
+              src={
+                windowSize >= desktopWidth
+                  ? currentTechnology.images.portrait
+                  : currentTechnology.images.landscape
+              }
+              alt="Technology"
+              variants={
+                windowSize >= desktopWidth
+                  ? imageVariants.desktopAnimation
+                  : imageVariants.mobileAnimation
+              }
+              initial="slideIn"
+              animate="animateSlide"
+              exit="slideOut"
+            />
+          </AnimatePresence>
         </ImageWrapper>
         <TechnologyInfoWrapper>
           <Dots>

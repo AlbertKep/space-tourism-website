@@ -15,7 +15,7 @@ import { RegularText } from "../../styles/RegularText.styled";
 
 import data from "../../data.json";
 import { useState } from "react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 
 const destinations = data.destinations;
 const defaultPlanet = destinations[0];
@@ -25,6 +25,26 @@ const routerVariants = {
   hidden: { opacity: 0 },
   visible: { opacity: 1 },
   exit: { opacity: 0, transition: { duration: 0.1 } },
+};
+
+const textVariants = {
+  slideIn: { opacity: 0, x: -50 },
+  animateSlide: {
+    opacity: 1,
+    x: 0,
+    transition: { duration: 0.5 },
+  },
+  slideOut: { opacity: 0, x: "100vw" },
+};
+
+const rotatePlanet = {
+  rotate: 360,
+  transition: {
+    type: "ease",
+    duration: 20,
+    repeat: Infinity,
+    ease: "linear",
+  },
 };
 
 export default function DestinationSection() {
@@ -51,19 +71,12 @@ export default function DestinationSection() {
           <span>02</span>Pick up your Destination
         </DestinationSubheading>
 
-        <PlanetImageContainer
-          as={motion.div}
-          animate={{
-            rotate: 360,
-            transition: {
-              type: "ease",
-              duration: 20,
-              repeat: Infinity,
-              ease: "linear",
-            },
-          }}
-        >
-          <img src={currentPlanet.images.png} alt="Moon" />
+        <PlanetImageContainer>
+          <motion.img
+            src={currentPlanet.images.png}
+            alt={currentPlanet.name}
+            animate={rotatePlanet}
+          />
         </PlanetImageContainer>
       </PlanetContainer>
 
@@ -83,20 +96,30 @@ export default function DestinationSection() {
             </PlanetsItem>
           ))}
         </PlanetsList>
-        <PlanetName>{currentPlanet.name}</PlanetName>
-        <RegularText>{currentPlanet.description}</RegularText>
+        <AnimatePresence exitBeforeEnter>
+          <motion.div
+            key={currentPlanet.name}
+            variants={textVariants}
+            initial="slideIn"
+            animate="animateSlide"
+            exit="slideOut"
+          >
+            <PlanetName>{currentPlanet.name}</PlanetName>
+            <RegularText>{currentPlanet.description}</RegularText>
 
-        <PlanetDetails>
-          <DetailsWrapper>
-            <span>Avg. Distance</span>
-            <span>{currentPlanet.distance}</span>
-          </DetailsWrapper>
+            <PlanetDetails>
+              <DetailsWrapper>
+                <span>Avg. Distance</span>
+                <span>{currentPlanet.distance}</span>
+              </DetailsWrapper>
 
-          <DetailsWrapper>
-            <span>Est. time travel</span>
-            <span>{currentPlanet.travel}</span>
-          </DetailsWrapper>
-        </PlanetDetails>
+              <DetailsWrapper>
+                <span>Est. time travel</span>
+                <span>{currentPlanet.travel}</span>
+              </DetailsWrapper>
+            </PlanetDetails>
+          </motion.div>
+        </AnimatePresence>
       </PlanetInfo>
     </DestinationContainer>
   );

@@ -23,7 +23,7 @@ export const LogoIcon = styled.img`
 `;
 
 export const MenuIconContainer = styled.div`
-  z-index: 999;
+  z-index: 9999;
   cursor: pointer;
 
   @media only screen and (min-width: 768px) {

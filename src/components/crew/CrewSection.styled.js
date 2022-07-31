@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { InfoWrapper } from "../layout/Layout.styled";
+import { ImageWrapper, InfoWrapper } from "../layout/Layout.styled";
 
 export const CrewContainer = styled.section`
   margin: 0 auto;
@@ -33,7 +33,11 @@ export const ControlContainer = styled.div`
     justify-content: space-around;
   }
 `;
-
+export const CrewImageWrapper = styled(ImageWrapper)`
+  @media only screen and (min-width: 992px) {
+    height: 400px;
+  }
+`;
 export const CrewInfoWrapper = styled(InfoWrapper)`
   @media only screen and (min-width: 768px) {
     display: flex;

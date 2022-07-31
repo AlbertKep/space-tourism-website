@@ -16,6 +16,30 @@ const routerVariants = {
   exit: { opacity: 0, transition: { duration: 0.1 } },
 };
 
+const homeContentVariants = {
+  hidden: {
+    opacity: 0,
+    x: "-100%",
+  },
+  visible: {
+    opacity: 1,
+    x: 0,
+    transition: { duration: 0.75 },
+  },
+};
+
+const imageVariants = {
+  hidden: {
+    opacity: 0,
+    x: "100%",
+  },
+  visible: {
+    opacity: 1,
+    x: 0,
+    transition: { duration: 0.75 },
+  },
+};
+
 const HomeSection = () => {
   return (
     <HomeHeader
@@ -25,11 +49,7 @@ const HomeSection = () => {
       animate="visible"
       exit="exit"
     >
-      <HomeContentContainer
-        as={motion.div}
-        initial={{ opacity: 0, x: "-100%" }}
-        animate={{ opacity: 1, x: 0, transition: { duration: 0.75 } }}
-      >
+      <HomeContentContainer as={motion.div} variants={homeContentVariants}>
         <Subheading>So, you want to travel to</Subheading>
         <MainHeading>Space</MainHeading>
         <RegularText>
@@ -39,11 +59,7 @@ const HomeSection = () => {
           experience!
         </RegularText>
       </HomeContentContainer>
-      <HomeButtonContainer
-        as={motion.div}
-        initial={{ opacity: 0, x: "100%" }}
-        animate={{ opacity: 1, x: 0, transition: { duration: 0.75 } }}
-      >
+      <HomeButtonContainer as={motion.div} variants={imageVariants}>
         <HomeButton>Explore</HomeButton>
       </HomeButtonContainer>
     </HomeHeader>
