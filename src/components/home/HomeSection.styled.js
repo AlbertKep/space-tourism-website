@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { Subheading } from "../../styles/Subheading.styled";
 
 export const HomeHeader = styled.header`
   max-width: 1200px;
@@ -46,6 +47,16 @@ export const MainHeading = styled.h1`
   }
 `;
 
+export const HomeSubheading = styled(Subheading)`
+  @media only screen and (min-width: 768px) {
+    text-align: center;
+    margin-left: 0;
+  }
+
+  @media only screen and (min-width: 992px) {
+    text-align: left;
+  }
+`;
 export const HomeButtonContainer = styled.div`
   margin-top: 4em;
 
@@ -57,7 +68,6 @@ export const HomeButtonContainer = styled.div`
 export const HomeButton = styled.button`
   color: #0b0d17;
   font-size: 2rem;
-  /* padding: 2em; */
   border: none;
   width: 150px;
   height: 150px;

@@ -2,11 +2,11 @@ import {
   HomeHeader,
   HomeContentContainer,
   MainHeading,
+  HomeSubheading,
   HomeButtonContainer,
   HomeButton,
 } from "./HomeSection.styled";
 
-import { Subheading } from "../../styles/Subheading.styled";
 import { RegularText } from "../../styles/RegularText.styled";
 import { motion } from "framer-motion";
 
@@ -50,7 +50,7 @@ const HomeSection = () => {
       exit="exit"
     >
       <HomeContentContainer as={motion.div} variants={homeContentVariants}>
-        <Subheading>So, you want to travel to</Subheading>
+        <HomeSubheading>So, you want to travel to</HomeSubheading>
         <MainHeading>Space</MainHeading>
         <RegularText>
           Let’s face it; if you want to go to space, you might as well genuinely

@@ -37,7 +37,7 @@ export const DestinationSubheading = styled(Subheading)`
   }
 
   @media only screen and (min-width: 992px) {
-    font-size: 1.5rem;
+    /* font-size: 1.5rem; */
     margin-left: 2em;
     margin-bottom: 3em;
     letter-spacing: 4px;

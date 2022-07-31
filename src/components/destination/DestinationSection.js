@@ -55,7 +55,6 @@ export default function DestinationSection() {
       ({ name }) => name === currentSelectedPlanet
     );
     if (planet) setCurrentPlanet(planet);
-    console.log(planet);
   };
 
   return (
